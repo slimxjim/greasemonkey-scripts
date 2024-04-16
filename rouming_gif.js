@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Otevření odkazu "&gt;&gt;" klávesou šipka vpravo
+// @name         Control GIFs with arrow key
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Otevře odkaz s textem "&gt;&gt;" pomocí klávesy šipka vpravo.
+// @version      0.2
+// @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingGIF.php*
 // @grant        none
@@ -11,20 +11,20 @@
 (function() {
     'use strict';
 
-    // Najdeme všechny odkazy na stránce
+    // Find all links on the page
     let links = document.querySelectorAll('a');
 
-    // Projdeme každý odkaz
+    // Iterate through each link
     links.forEach(
       function(link) {
-        // Pokud odkaz obsahuje text "&gt;&gt;"
+        // If the link contains the text "&gt;&gt;"
         if (link.textContent.includes('&gt;&gt;') || link.textContent.includes('>>')) {
-            console.log('Našel jsem:', link);
+            console.log('Found:', link);
             link.classList.add('next-gif');
             console.log(link);
         }
         if (link.textContent.includes('&lt;&lt;') || link.textContent.includes('<<')) {
-            console.log('Našel jsem:', link);
+            console.log('Found:', link);
             link.classList.add('prev-gif');
             console.log(link);
         }
@@ -36,7 +36,7 @@
 
         let nextGifLink = document.querySelector('.next-gif');
         let prevGifLink = document.querySelector('.prev-gif');
-        // Najdeme video element
+        // Find the video element
         let video = document.getElementById('video');
 
         e = e || window.event;
@@ -46,7 +46,7 @@
             console.log('^^');
             if (nextGifLink) {
                 console.log(nextGifLink.href);
-                // Přidá zvuk o 10%
+                // Increase volume by 10%
                 video.volume = video.volume + 0.1;
             }
         }
@@ -55,7 +55,7 @@
             console.log('ˇˇ');
             if (nextGifLink) {
                 console.log(nextGifLink.href);
-                // Vypneme zvuk
+                // Mute the volume
                 video.volume = 0;
             }
         }
@@ -68,7 +68,7 @@
                 window.location.href = prevGifLink.href;
             }
             else {
-                console.log('Jsem na začátku.');
+                console.log('I am at the beginning.');
                 window.location.href = 'https://www.rouming.cz/';
             }
         }
