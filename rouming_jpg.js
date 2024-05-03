@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Control JPGs - styling
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingShow.php*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=rouming.cz
 // @grant        none
 // ==/UserScript==
 

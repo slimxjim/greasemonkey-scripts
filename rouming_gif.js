@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Control GIFs with arrow key
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingGIF.php*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=rouming.cz
 // @grant        none
 // ==/UserScript==
 
