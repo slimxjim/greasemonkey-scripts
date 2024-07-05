@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Control JPGs - styling
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingShow.php*
+// @match        https://www.roumenovomaso.cz/masoShow.php*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rouming.cz
 // @grant        none
 // ==/UserScript==
@@ -115,5 +116,59 @@
             img.style.height = null;
         }
     });
+
+
+    // Find all links on the page
+    let links = document.querySelectorAll('a');
+
+    // Iterate through each link
+    links.forEach(
+      function(link) {
+        // If the link contains the text "&gt;&gt;"
+        if (link.textContent.includes('&gt;&gt;') || link.textContent.includes('>>')) {
+            //console.log('Found:', link);
+            link.classList.add('next-jpg');
+            //console.log(link);
+        }
+        if (link.textContent.includes('&lt;&lt;') || link.textContent.includes('<<')) {
+            //console.log('Found:', link);
+            link.classList.add('prev-jpg');
+            //console.log(link);
+        }
+    });
+
+    document.onkeydown = checkKey;
+
+    function checkKey(e) {
+
+        let nextGifLink = document.querySelector('.next-jpg');
+        let prevGifLink = document.querySelector('.prev-jpg');
+
+        e = e || window.event;
+
+       if (e.keyCode == '37') {
+            // left arrow
+            //console.log('<<');
+            if (prevGifLink) {
+                //console.log(prevGifLink.href);
+
+                window.location.href = prevGifLink.href;
+            }
+            else {
+                //console.log('I am at the beginning.');
+                window.location.href = 'https://www.rouming.cz/';
+            }
+        }
+        else if (e.keyCode == '39') {
+            // right arrow
+            console.log('>>');
+            if (nextGifLink) {
+                //console.log(nextGifLink.href);
+
+                window.location.href = nextGifLink.href;
+            }
+        }
+
+    }
 
 })();

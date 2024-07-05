@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Control GIFs with arrow key
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingGIF.php*
+// @match        https://www.roumenovomaso.cz/masoGIF.php*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=rouming.cz
 // @grant        none
 // ==/UserScript==
@@ -129,7 +130,7 @@
 
     }
 
-    let roumingListDiv = document.querySelector('.roumingList');
+    let roumingListDiv = document.querySelector('.roumingList') ? document.querySelector('.roumingList') : document.querySelector('.masoList');
     let wrapper = document.querySelector('.wrapper');
     let adDiv = document.querySelector('div[style="display:inline-block;width:728px;height:90px"]');
     let sidebarDiv = document.querySelector('.sidebar.w300');
