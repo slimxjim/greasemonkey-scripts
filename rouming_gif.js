@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Control GIFs with arrow key
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingGIF.php*
@@ -27,9 +27,9 @@
     let tables = document.querySelectorAll('table');
     console.log('Tables found: ', tables ?? tables.length);
     if (tables) {
-        tables[1].setAttribute('id', 'table-video');
-        tables[2].setAttribute('id', 'table-comments');
-        console.log('Identified tables: ', tables[1], tables[2])
+        tables[0].setAttribute('id', 'table-video');
+        tables[1].setAttribute('id', 'table-comments');
+        console.log('Identified tables: ', tables[0], tables[1])
     }
 
     //move comments from wrapper -> sidebar
@@ -127,6 +127,52 @@
             }
         }
 
+    }
+
+    let roumingListDiv = document.querySelector('.roumingList');
+    let wrapper = document.querySelector('.wrapper');
+    let adDiv = document.querySelector('div[style="display:inline-block;width:728px;height:90px"]');
+    let sidebarDiv = document.querySelector('.sidebar.w300');
+    let sidebarW300  = document.querySelector('.sidebar.w300');
+
+    if (adDiv) {
+        adDiv.style.display = 'none';
+    }
+    else {
+        console.log('adDiv not found:', adDiv);
+    }
+
+    if(roumingListDiv) {
+        roumingListDiv.style.display = 'flex';
+        roumingListDiv.style.flexDirection = 'row';
+        roumingListDiv.style.alignItems = 'flex-start';
+        roumingListDiv.style.justifyContent = 'flex-start';
+    }
+    else {
+        console.log('.roumingListDiv not found:', roumingListDiv);
+    }
+
+    if (wrapper && sidebarDiv) {
+        // Apply flexbox styles
+        // wrapper.style.display = 'flex';
+        // wrapper.style.flexDirection = 'row';
+        wrapper.style.maxWidth = '900px';
+        
+        sidebarDiv.style.flex = '0 0 300px'; // Fixed width for sidebar
+        sidebarDiv.style.marginLeft = 'auto'; // Push sidebar to the right
+    } else {
+        console.log('.Wrapper or .sidebar not found:', wrapper, sidebarDiv);
+    }
+    if (sidebarW300 ) {
+        console.log('sidebarW300  found:', sidebarW300 );
+        sidebarW300.style.setProperty('min-width', 'initial', 'important');
+        sidebarW300.style.setProperty('width', 'initial', 'important');
+        sidebarW300.style.setProperty('max-width', 'initial', 'important');
+        sidebarW300.style.setProperty('margin-left', '20px', 'important');
+        sidebarW300.style.setProperty('margin-top', '20px', 'important');
+    }
+    else {
+        console.log('.sidebarW300  not found:', sidebarW300 );
     }
 
 })();
