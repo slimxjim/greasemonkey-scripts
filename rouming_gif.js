@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Control GIFs with arrow key
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingGIF.php*
@@ -157,7 +157,7 @@
         // Apply flexbox styles
         // wrapper.style.display = 'flex';
         // wrapper.style.flexDirection = 'row';
-        wrapper.style.maxWidth = '900px';
+        wrapper.style.maxWidth = '1500px';
         
         sidebarDiv.style.flex = '0 0 300px'; // Fixed width for sidebar
         sidebarDiv.style.marginLeft = 'auto'; // Push sidebar to the right
