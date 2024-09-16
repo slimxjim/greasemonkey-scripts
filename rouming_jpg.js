@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Control JPGs - styling
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingShow.php*
@@ -112,7 +112,7 @@
         if (img.style.height === 'auto' && img.style.maxWidth === '100%') { // ('height: auto; max-width: 100%;')
             console.log('Found:', img);
             img.style.maxHeight = '750px';
-            img.style.maxWidth = '1500px';
+            img.style.maxWidth = '900px';
             img.style.height = null;
         }
     });
