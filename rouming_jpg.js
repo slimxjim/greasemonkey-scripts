@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Control JPGs - styling
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Opens link with text "&gt;&gt;" using the right arrow key.
 // @author       You
 // @match        https://www.rouming.cz/roumingShow.php*
@@ -85,7 +85,7 @@
         // wrapper.style.flexDirection = 'row';
         wrapper.style.maxWidth = '900px';
         
-        sidebarDiv.style.flex = '0 0 300px'; // Fixed width for sidebar
+        sidebarDiv.style.flex = '0 0 700px'; // Fixed width for sidebar
         sidebarDiv.style.marginLeft = 'auto'; // Push sidebar to the right
     } else {
         console.log('.Wrapper or .sidebar not found:', wrapper, sidebarDiv);
