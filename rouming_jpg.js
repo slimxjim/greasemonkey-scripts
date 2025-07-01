@@ -10,6 +10,8 @@
 // @grant        none
 // ==/UserScript==
 
+console.log('UserScripts - Tempermonkoey: Control JPGs - styling');
+
 (function() {
     'use strict';
 
